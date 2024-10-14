@@ -1,0 +1,35 @@
+class Solution {    
+    public int[] singleNumber(int[] nums) {        
+        //your code goes here
+        // Array to store the answer
+        List<Integer> ans = new ArrayList<>();
+        
+        /* Map to store the elements 
+        and their frequencies */
+        HashMap<Integer, Integer> mpp = new HashMap<>();
+        
+        // Iterate on the array
+        for (int num : nums) {
+            mpp.put(num, mpp.getOrDefault(num, 0) + 1); // Update the map
+        }
+        
+        // Iterate on the map
+        for (int key:mpp.keySet()) {
+            // If frequency is 1
+            if (mpp.get(key) == 1) {
+                /* Add the element to
+                the result array */
+                ans.add(key);
+            }
+        }
+        
+        // Convert the list to an array
+        int[] result = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) {
+            result[i] = ans.get(i);
+        }
+        
+        // Return the result array
+        return result;
+    }
+}
